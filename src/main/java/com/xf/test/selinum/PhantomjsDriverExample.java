@@ -1,4 +1,4 @@
-package com.xf.test.alg.selinum;
+package com.xf.test.selinum;
 
 /**
  * Created by xuefeng on 2017/7/29.
