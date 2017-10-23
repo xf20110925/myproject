@@ -35,7 +35,7 @@ public class WebDriverPool {
     private final static int STAT_CLODED = 2;
 
     private AtomicInteger stat = new AtomicInteger(STAT_RUNNING);
-    private String phantomjs_execute_path = "/Users/xuefeng/Downloads/soft/phantomjs-2.1.1-macosx/bin/phantomjs";
+    private String phantomjs_execute_path = getClass().getClassLoader().getResource("./driver/phantomjs").getPath();
 
     /*
      * new fields for configuring phantomJS
