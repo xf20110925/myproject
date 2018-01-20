@@ -80,6 +80,7 @@ public class MergeTwoSortList {
             }
             prev = prev.next;
         }
+        //防止漏掉数据 l1或者l2不为空，把数据追加到最后
         prev.next = l1 == null ? l2 : l1;
         return prehead.next;
     }
