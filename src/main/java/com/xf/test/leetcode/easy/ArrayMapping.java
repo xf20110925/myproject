@@ -1,4 +1,4 @@
-package com.xf.test.leetcode;
+package com.xf.test.leetcode.easy;
 
 import java.util.ArrayList;
 import java.util.HashMap;
