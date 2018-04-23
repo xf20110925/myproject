@@ -6,17 +6,17 @@ package com.xf.test.alg;
  */
 public class InsertSort {
     public static int[] insertSort(int[] array) {
-        for (int i = 1; i < array.length; i++) {
-            int j = i - 1;
-            int k = array[i];
-            while (j >= 0 && k < array[j]) {
-                array[j + 1] = array[j];
-                j--;
+        for (int i = 0; i < array.length - 1; i++) {
+
+            for (int j = i + 1; j > 0; j--) {
+                if (array[j] < array[j - 1]){
+                    int tmp = array[j];
+                    array[j] = array[j - 1];
+                    array[j - 1] = tmp;
+                }
             }
-            array[j + 1] = k;
         }
         return array;
-
     }
 
     public static void main(String[] args) {
