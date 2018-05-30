@@ -124,31 +124,21 @@
             <artifactId>selenium-api</artifactId>
             <version>2.53.0</version>
         </dependency>
-    </dependencies>
+        <dependency>
+            <groupId>com.typesafe.akka</groupId>
+            <artifactId>akka-remote_2.11</artifactId>
+            <version>2.5.8</version>
+        </dependency>
+		<dependency>
+			<groupId>org.apache.pdfbox</groupId>
+			<artifactId>fontbox</artifactId>
+			<version>2.0.7</version>
+		</dependency>
+	</dependencies>
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	</properties>
-	<profiles>
-		<profile>
-			<id>dev</id>
-			<properties>
-				<env>dev</env>
-			</properties>
-		</profile>
-		<profile>
-			<id>test</id>
-			<properties>
-				<env>test</env>
-			</properties>
-		</profile>
-		<profile>
-			<id>prod</id>
-			<properties>
-				<env>prod</env>
-			</properties>
-		</profile>
-	</profiles>
 	<build>
 		<plugins>
 			<plugin>
