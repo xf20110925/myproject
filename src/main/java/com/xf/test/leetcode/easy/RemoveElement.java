@@ -39,7 +39,7 @@ public class RemoveElement {
         int i = 0;
         for (int j = 0; j < nums.length; j++) {
             if (nums[j] != val) {
-                nums[i] = nums[j];
+                swap(nums, i, j);
                 i++;
             }
         }
@@ -47,10 +47,16 @@ public class RemoveElement {
         return i;
     }
 
+    static void swap(int[] nums, int i, int j){
+        int tmp = nums[i];
+        nums[i] = nums[j];
+        nums[j] = tmp;
+    }
+
     public static void main(String[] args) {
         int[] arrays = {2, 3, 2, 2, 3};
-        final int i = removeElement(arrays, 3);
-        System.out.println(i);
+//        final int i = removeElement(arrays, 3);
+//        System.out.println(i);
 
         final int i1 = removeElement1(arrays, 3);
         System.out.println(i1);
