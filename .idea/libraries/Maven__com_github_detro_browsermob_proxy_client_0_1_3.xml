@@ -8,6 +8,7 @@
     </JAVADOC>
     <SOURCES>
       <root url="jar://$MAVEN_REPOSITORY$/com/github/detro/browsermob-proxy-client/0.1.3/browsermob-proxy-client-0.1.3-sources.jar!/" />
+      <root url="jar://$USER_HOME$/.ideaLibSources/browsermob-proxy-client-0.1.3-sources.jar!/" />
     </SOURCES>
   </library>
 </component>

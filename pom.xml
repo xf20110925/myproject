@@ -6,7 +6,8 @@
 	<version>0.0.1</version>
 	<modules>
 		<module>javamode</module>
-	</modules>
+        <module>anyproxy</module>
+    </modules>
 	<name>myproject</name>
 	<url>http://maven.apache.org</url>
 
