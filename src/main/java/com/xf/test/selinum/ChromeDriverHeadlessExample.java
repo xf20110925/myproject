@@ -5,17 +5,19 @@ package com.xf.test.selinum;
  * 谷歌无头浏览器
  */
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.apache.commons.io.FileUtils;
+import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeDriverService;
 import org.openqa.selenium.chrome.ChromeOptions;
 
+import java.io.File;
+import java.io.IOException;
+
 
 public class ChromeDriverHeadlessExample {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         final String chromeDriverPath = ChromeDriverHeadlessExample.class.getClassLoader().getResource("driver/chromedriver").getPath();
         System.setProperty(ChromeDriverService.CHROME_DRIVER_EXE_PROPERTY, chromeDriverPath);
         ChromeOptions options = new ChromeOptions();
@@ -26,6 +28,10 @@ public class ChromeDriverHeadlessExample {
         WebElement element = driver.findElement(By.name("q"));
         element.sendKeys("Cheese!");
         element.submit();
+
+        File screenshot = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
+        FileUtils.copyFile(screenshot, new File("screenshot.png"));
+
 
         System.out.println("Page title is: " + driver.getTitle());
 
