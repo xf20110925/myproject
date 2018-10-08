@@ -15,7 +15,8 @@ import org.openqa.selenium.remote.DesiredCapabilities;
 public class ChromeDriverExample {
 
     public static void main(String[] args) {
-        System.setProperty(ChromeDriverService.CHROME_DRIVER_EXE_PROPERTY, "/Users/xuefeng/Downloads/soft/chromedriver");
+        final String binaryPath = ChromeDriverExample.class.getClassLoader().getResource("driver/chromedriver").getPath();
+        System.setProperty(ChromeDriverService.CHROME_DRIVER_EXE_PROPERTY, binaryPath);
         final DesiredCapabilities capabilities = DesiredCapabilities.chrome();
         capabilities.setJavascriptEnabled(true);
         // Disable "web-security", enable all possible "ssl-protocols" and "ignore-ssl-errors" for PhantomJSDriver
