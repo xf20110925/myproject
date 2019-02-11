@@ -1,4 +1,4 @@
-package com.xf.test.leetcode.easy;
+package com.xf.test.leetcode.easy.stack;
 
 import java.util.Arrays;
 import java.util.LinkedList;

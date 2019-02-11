@@ -1,4 +1,4 @@
-package com.xf.test.leetcode.easy;
+package com.xf.test.leetcode.easy.string;
 
 /**
  * 题目：
