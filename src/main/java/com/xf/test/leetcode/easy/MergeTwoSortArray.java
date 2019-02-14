@@ -29,10 +29,41 @@ public class MergeTwoSortArray {
         return nums1;
     }
 
+    public static Integer[] merge(Integer[] nums1, Integer[] nums2) {
+        int i1 = 0;
+        int i2 = 0;
+        int i = 0;
+        Integer[] result = new Integer[nums1.length + nums2.length];
+        while (i1 < nums1.length && i2 < nums2.length) {
+            if (nums1[i1] < nums2[i2]) {
+                result[i++] = nums1[i1];
+                i1++;
+            } else {
+                result[i++] = nums2[i2];
+                i2++;
+            }
+        }
+
+        while (i1 < nums1.length) {
+            result[i] = nums1[i1++];
+            i++;
+        }
+
+        while (i2 < nums2.length) {
+            result[i] = nums2[i2++];
+            i++;
+        }
+
+        return result;
+    }
+
     public static void main(String[] args) {
         final Integer[] nums1 = Arrays.asList(0, 2, 3, 5, 10, 33).toArray(new Integer[13]);
         final Integer[] nums2 = Arrays.asList(1, 5, 13, 25, 30, 31, 100).toArray(new Integer[0]);
         final String allData = Arrays.toString(merge(nums1, 6, nums2, 7));
         System.out.println(allData);
+        System.out.println("*****************");
+        final String allData1 = Arrays.toString(merge(new Integer[]{0, 2, 3, 5, 10, 33}, new Integer[]{1, 5, 13, 25, 30, 31, 100}));
+        System.out.println(allData1);
     }
 }
