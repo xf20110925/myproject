@@ -14,8 +14,8 @@ import java.util.LinkedList;
  * 描述
  * Given a binary tree, return the level order traversal of its nodes’ values. (ie, from le to right, level by level).
  * For example: Given binary tree {3,9,20,#,#,15,7},
- * 3
- * /\
+ *  3
+ *  /\
  * 9 20
  *   /\
  *  15 7
@@ -127,20 +127,35 @@ public class TreeTraverse {
                 stack.push(right);
             result.push(headTree);
         }
-        while (!result.isEmpty()){
+        while (!result.isEmpty()) {
             System.out.println(result.poll().val);
         }
+    }
+
+    //二叉树镜像反转
+    public static void treeReverse(Tree tree) {
+        if (tree == null)
+            return;
+        Tree left = tree.left;
+        Tree right = tree.right;
+        tree.left = right;
+        tree.right = left;
+        treeReverse(left);
+        treeReverse(right);
     }
 
     public static void main(String[] args) {
         Tree tree = new Tree(3).setLeft(new Tree(9)).setRight(new Tree(20).setLeft(new Tree(15)).setRight(new Tree(7)));
         solutionRecursion(tree);
-        System.out.println("######################");
-        solutionNoRecursion(tree);
-        System.out.println("######################");
-        solutionNoRecursionMiddleTraverse(tree);
-        System.out.println("######################");
-        solutionNoRecursionLastTraverse(tree);
+//        System.out.println("######################");
+//        solutionNoRecursion(tree);
+//        System.out.println("######################");
+//        solutionNoRecursionMiddleTraverse(tree);
+//        System.out.println("######################");
+//        solutionNoRecursionLastTraverse(tree);
 
+        treeReverse(tree);
+        System.out.println("*********************");
+        solutionRecursion(tree);
     }
 }
