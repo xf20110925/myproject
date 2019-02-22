@@ -2,6 +2,7 @@ package com.xf.test.leetcode.easy.tree;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
+import java.util.Queue;
 
 /**
  * Created by xuefeng on 2019/2/12
@@ -14,11 +15,11 @@ import java.util.LinkedList;
  * 描述
  * Given a binary tree, return the level order traversal of its nodes’ values. (ie, from le to right, level by level).
  * For example: Given binary tree {3,9,20,#,#,15,7},
- *  3
- *  /\
+ * 3
+ * /\
  * 9 20
- *   /\
- *  15 7
+ * /\
+ * 15 7
  * <p>
  * 第5章 树
  * 76 第5章 树 return its level order traversal as:
@@ -92,7 +93,7 @@ public class TreeTraverse {
         }
     }
 
-    //非递归
+    //非递归,中序遍历
     public static void solutionNoRecursionMiddleTraverse(Tree tree) {
         LinkedList<Tree> stack = new LinkedList<>();
         ArrayList<Tree> list = new ArrayList<>();
@@ -144,6 +145,47 @@ public class TreeTraverse {
         treeReverse(right);
     }
 
+    //二叉树层次遍历
+    public static void levelReverse(Tree tree) {
+        LinkedList<Tree> queue = new LinkedList<>();
+        queue.add(tree);
+        while (!queue.isEmpty()) {
+            Tree currentTree = queue.poll();
+            System.out.println(currentTree.val);
+            if (currentTree.left != null)
+                queue.add(currentTree.left);
+            if (currentTree.right != null)
+                queue.add(currentTree.right);
+        }
+    }
+
+    /**
+     * 手写代码判断完全二叉树
+     * <p>
+     * 层序遍历，1、如果当前节点左节点为null并且右节点不为null直接返回false
+     * 2、如果当前节点当前节点并不是左右节点都有，那么之后的节点必须为叶子节点，否则返回false
+     */
+    public static boolean isCompleteTree(Tree tree) {
+        LinkedList<Tree> queue = new LinkedList<>();
+        queue.add(tree);
+        boolean isLeaf = false;
+        while (!queue.isEmpty()) {
+            Tree currentNode = queue.poll();
+            if (currentNode.left == null && currentNode.right != null)
+                return false;
+            if (isLeaf && (currentNode.left != null || currentNode.right != null))
+                return false;
+            if (currentNode.left != null && currentNode.right == null) {
+                isLeaf = true;
+            }
+            if (currentNode.left != null)
+                queue.add(currentNode.left);
+            if (currentNode.right != null)
+                queue.add(currentNode.right);
+        }
+        return true;
+    }
+
     public static void main(String[] args) {
         Tree tree = new Tree(3).setLeft(new Tree(9)).setRight(new Tree(20).setLeft(new Tree(15)).setRight(new Tree(7)));
         solutionRecursion(tree);
@@ -156,6 +198,14 @@ public class TreeTraverse {
 
         treeReverse(tree);
         System.out.println("*********************");
-        solutionRecursion(tree);
+        levelReverse(tree);
+
+        Tree completeTree = new Tree(3).setLeft(new Tree(9).setLeft(new Tree(1))).setRight(new Tree(20));
+        boolean is = isCompleteTree(completeTree);
+        System.out.println(is);
+
+        Tree noCompleteTree = new Tree(3).setLeft(new Tree(9).setLeft(new Tree(1))).setRight(new Tree(20).setLeft(new Tree(6)));
+        boolean not = isCompleteTree(noCompleteTree);
+        System.out.println(not);
     }
 }

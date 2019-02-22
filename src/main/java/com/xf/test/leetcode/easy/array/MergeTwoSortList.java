@@ -1,4 +1,4 @@
-package com.xf.test.leetcode.easy;
+package com.xf.test.leetcode.easy.array;
 
 import java.util.ArrayList;
 import java.util.Arrays;
